@@ -12,6 +12,6 @@ COPY ./rapidjson /rapidjson
 COPY ./tclap /tclap
 RUN g++ -O3 --std=c++17 -I /rapidjson/include -I /tclap/include/ schemavalidator.cpp -o validator -lstdc++fs
 
-FROM databricksruntime/standard:13.x 
+FROM base
 COPY --from=build /validator /validator
 ENTRYPOINT ["/validator"]
