@@ -1,4 +1,4 @@
-FROM databricksruntime/standard:13.x as base
+FROM databricksruntime/standard:13.3-LTS as base
 RUN /databricks/python3/bin/pip install pandas
 RUN /databricks/python3/bin/pip install urllib3
 
