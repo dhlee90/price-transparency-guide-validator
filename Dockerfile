@@ -17,4 +17,4 @@ RUN g++ -O3 --std=c++17 -I /rapidjson/include -I /tclap/include/ schemavalidator
 
 FROM base
 COPY --from=build /validator /validator
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/sh"]
