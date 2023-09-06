@@ -1,3 +1,7 @@
+FROM databricksruntime/standard:13.x as base
+RUN /databricks/python3/bin/pip install pandas
+RUN /databricks/python3/bin/pip install urllib3
+
 FROM ubuntu as build
 
 ARG VERSION=v1.0.0
