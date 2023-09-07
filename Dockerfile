@@ -1,6 +1,7 @@
 FROM databricksruntime/standard:13.3-LTS as base
 RUN /databricks/python3/bin/pip install pandas urllib3
-RUN apt-get -y update && apt-get -y install git nodejs npm
+RUN apt-get -y update && apt-get -y install git nodejs npm 
+RUN apt install -y --no-install-recommends docker.io
 RUN git clone  --recurse-submodules https://github.com/CMSgov/price-transparency-guide-validator.git
 WORKDIR /price-transparency-guide-validator
 RUN npm install -g n cms-mrf-validator
@@ -17,4 +18,4 @@ RUN g++ -O3 --std=c++17 -I /rapidjson/include -I /tclap/include/ schemavalidator
 
 FROM base
 COPY --from=build /validator /validator
-ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["/bin/bash"]
